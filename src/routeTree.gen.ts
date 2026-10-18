@@ -10,8 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CommunityRouteImport } from './routes/community'
 import { Route as CropDoctorRouteImport } from './routes/crop-doctor'
 import { Route as IrrigationRouteImport } from './routes/irrigation'
+import { Route as MarketRouteImport } from './routes/market'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as SchemesRouteImport } from './routes/schemes'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -19,6 +21,11 @@ import { Route as ApiChatRouteImport } from './routes/api/chat'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CropDoctorRoute = CropDoctorRouteImport.update({
@@ -29,6 +36,11 @@ const CropDoctorRoute = CropDoctorRouteImport.update({
 const IrrigationRoute = IrrigationRouteImport.update({
   id: '/irrigation',
   path: '/irrigation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketRoute = MarketRouteImport.update({
+  id: '/market',
+  path: '/market',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsRoute = NewsRouteImport.update({
@@ -49,16 +61,20 @@ const ApiChatRoute = ApiChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
   '/crop-doctor': typeof CropDoctorRoute
   '/irrigation': typeof IrrigationRoute
+  '/market': typeof MarketRoute
   '/news': typeof NewsRoute
   '/schemes': typeof SchemesRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
   '/crop-doctor': typeof CropDoctorRoute
   '/irrigation': typeof IrrigationRoute
+  '/market': typeof MarketRoute
   '/news': typeof NewsRoute
   '/schemes': typeof SchemesRoute
   '/api/chat': typeof ApiChatRoute
@@ -66,8 +82,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
   '/crop-doctor': typeof CropDoctorRoute
   '/irrigation': typeof IrrigationRoute
+  '/market': typeof MarketRoute
   '/news': typeof NewsRoute
   '/schemes': typeof SchemesRoute
   '/api/chat': typeof ApiChatRoute
@@ -75,14 +93,31 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/crop-doctor' | '/irrigation' | '/news' | '/schemes' | '/api/chat'
+    | '/'
+    | '/community'
+    | '/crop-doctor'
+    | '/irrigation'
+    | '/market'
+    | '/news'
+    | '/schemes'
+    | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/crop-doctor' | '/irrigation' | '/news' | '/schemes' | '/api/chat'
+  to:
+    | '/'
+    | '/community'
+    | '/crop-doctor'
+    | '/irrigation'
+    | '/market'
+    | '/news'
+    | '/schemes'
+    | '/api/chat'
   id:
     | '__root__'
     | '/'
+    | '/community'
     | '/crop-doctor'
     | '/irrigation'
+    | '/market'
     | '/news'
     | '/schemes'
     | '/api/chat'
@@ -90,8 +125,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommunityRoute: typeof CommunityRoute
   CropDoctorRoute: typeof CropDoctorRoute
   IrrigationRoute: typeof IrrigationRoute
+  MarketRoute: typeof MarketRoute
   NewsRoute: typeof NewsRoute
   SchemesRoute: typeof SchemesRoute
   ApiChatRoute: typeof ApiChatRoute
@@ -106,6 +143,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/crop-doctor': {
       id: '/crop-doctor'
       path: '/crop-doctor'
@@ -118,6 +162,13 @@ declare module '@tanstack/react-router' {
       path: '/irrigation'
       fullPath: '/irrigation'
       preLoaderRoute: typeof IrrigationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/market': {
+      id: '/market'
+      path: '/market'
+      fullPath: '/market'
+      preLoaderRoute: typeof MarketRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news': {
@@ -146,8 +197,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommunityRoute: CommunityRoute,
   CropDoctorRoute: CropDoctorRoute,
   IrrigationRoute: IrrigationRoute,
+  MarketRoute: MarketRoute,
   NewsRoute: NewsRoute,
   SchemesRoute: SchemesRoute,
   ApiChatRoute: ApiChatRoute,
