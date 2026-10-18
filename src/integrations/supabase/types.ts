@@ -14,7 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      community_posts: {
+        Row: {
+          author_name: string
+          category: string
+          content: string
+          created_at: string
+          id: string
+          likes: number
+          location: string
+        }
+        Insert: {
+          author_name: string
+          category?: string
+          content: string
+          created_at?: string
+          id?: string
+          likes?: number
+          location?: string
+        }
+        Update: {
+          author_name?: string
+          category?: string
+          content?: string
+          created_at?: string
+          id?: string
+          likes?: number
+          location?: string
+        }
+        Relationships: []
+      }
+      market_listings: {
+        Row: {
+          created_at: string
+          crop: string
+          id: string
+          listing_type: string
+          location: string
+          phone: string
+          price: string
+          quantity: string
+          seller_name: string
+        }
+        Insert: {
+          created_at?: string
+          crop: string
+          id?: string
+          listing_type?: string
+          location: string
+          phone: string
+          price: string
+          quantity: string
+          seller_name: string
+        }
+        Update: {
+          created_at?: string
+          crop?: string
+          id?: string
+          listing_type?: string
+          location?: string
+          phone?: string
+          price?: string
+          quantity?: string
+          seller_name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
