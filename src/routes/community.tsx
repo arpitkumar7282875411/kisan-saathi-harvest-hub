@@ -59,10 +59,10 @@ function Page() {
   return (
     <AppShell>
       <PageTitle title="Kisan Chaupal 🤝" subtitle="Farmers helping farmers. Ask, share, learn." />
-      <div className="grid gap-6 md:grid-cols-[360px_1fr]">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-[360px_minmax(0,1fr)]">
         <form onSubmit={submit} className="h-fit space-y-3 rounded-3xl bg-field p-5 text-primary-foreground shadow-soft md:sticky md:top-20">
           <h3 className="text-xl font-bold">Share with farmers</h3>
-          <div className="grid grid-cols-2 gap-2 text-foreground">
+          <div className="grid grid-cols-1 gap-2 text-foreground sm:grid-cols-2">
             <input required className={input} placeholder="Your name" value={form.author_name} onChange={(e) => setForm({ ...form, author_name: e.target.value })} />
             <input className={input} placeholder="Village / State" value={form.location} onChange={(e) => setForm({ ...form, location: e.target.value })} />
           </div>
