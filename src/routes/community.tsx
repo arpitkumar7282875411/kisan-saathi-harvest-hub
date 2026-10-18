@@ -50,7 +50,7 @@ function Page() {
     setSaving(true);
     const { error } = await supabase.from("community_posts").insert(form);
     setSaving(false);
-    if (error) return toast.error("Could not post. Please fill your name and message.");
+    if (error) { toast.error("Could not post. Please fill your name and message."); return; }
     toast.success("Posted to the community!");
     setForm({ ...form, content: "" });
     qc.invalidateQueries({ queryKey: ["posts"] });

@@ -18,7 +18,8 @@ export const Route = createFileRoute("/news")({
 });
 
 function Page() {
-  const [first, ...rest] = NEWS;
+  const first = NEWS[0]!;
+  const rest = NEWS.slice(1);
   return (
     <AppShell>
       <PageTitle title="Krishi News 📰" subtitle="Updates that matter for your farm." />

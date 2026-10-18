@@ -57,7 +57,7 @@ export function AssistantChat({
     if ((!t && !photo) || busy) return;
     sendMessage({
       text: t || "Please check this crop photo and tell me the problem and treatment.",
-      files: photo ? [photo] : undefined,
+      ...(photo ? { files: [photo] } : {}),
     });
     setInput("");
     setPhoto(null);

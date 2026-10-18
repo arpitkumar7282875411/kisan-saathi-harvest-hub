@@ -44,7 +44,7 @@ function Page() {
     setSaving(true);
     const { error } = await supabase.from("market_listings").insert(form);
     setSaving(false);
-    if (error) return toast.error("Could not post. Check name and phone.");
+    if (error) { toast.error("Could not post. Check name and phone."); return; }
     toast.success("Your listing is live!");
     setForm({ ...form, crop: "", quantity: "", price: "" });
     qc.invalidateQueries({ queryKey: ["listings"] });

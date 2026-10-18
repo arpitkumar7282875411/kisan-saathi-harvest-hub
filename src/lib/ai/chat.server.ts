@@ -37,7 +37,7 @@ function errorMessage(error: unknown) {
 }
 
 export async function handleChat(request: Request) {
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env["LOVABLE_API_KEY"];
   if (!apiKey) return Response.json({ error: "AI is not configured." }, { status: 500 });
 
   let body: { messages?: UIMessage[]; mode?: string };
@@ -47,7 +47,7 @@ export async function handleChat(request: Request) {
     return Response.json({ error: "Invalid request" }, { status: 400 });
   }
   const messages = Array.isArray(body.messages) ? body.messages.slice(-30) : [];
-  const instructions = MODES[body.mode ?? "assistant"] ?? MODES.assistant;
+  const instructions = MODES[body.mode ?? "assistant"] ?? MODES["assistant"]!;
 
   const runIdFetch = createLovableAiGatewayRunIdFetch(getLovableAiGatewayRunId(request));
   const provider = createOpenAI({
