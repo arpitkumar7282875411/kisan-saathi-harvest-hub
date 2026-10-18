@@ -74,7 +74,7 @@ function Page() {
       </div>
       <p className="text-xs text-muted-foreground">Indicative rates. For live prices check agmarknet.gov.in or enam.gov.in.</p>
 
-      <div className="mt-8 grid gap-6 md:grid-cols-[1fr_360px]">
+      <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_360px]">
         <section>
           <h2 className="mb-3 text-2xl font-bold">Buy & sell directly</h2>
           <div className="grid gap-3 sm:grid-cols-2">

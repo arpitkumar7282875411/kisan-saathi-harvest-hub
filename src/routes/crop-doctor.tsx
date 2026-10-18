@@ -30,7 +30,7 @@ function Page() {
   return (
     <AppShell>
       <PageTitle title="Crop Doctor 🩺" subtitle="Tell me what you see on your crop. A photo is optional." />
-      <div className="grid gap-6 md:grid-cols-[1fr_320px]">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_320px]">
         <AssistantChat
           mode="doctor"
           greeting="Describe the problem: crop name, what the leaves/fruits look like, and since when. You can also attach a photo with the camera button if you like."
